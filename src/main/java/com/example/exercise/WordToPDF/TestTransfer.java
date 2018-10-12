@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class TestTransfer {
+    //官网：www.xdocin.com
     public static void main(String[] args) {
         XDocService service = new XDocService();
         try {
