@@ -4,16 +4,67 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+import static java.lang.Thread.currentThread;
+import static java.lang.Thread.sleep;
 
 public class Test {
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws ParseException, InterruptedException {
 
-        Map map = new HashMap();
-        map.put("s", "01");
+        Thread thread = new Thread(()->{
+            System.out.println(currentThread().getName()+":sleep");
+            try {
+                sleep(3000);
+                System.out.println(currentThread().getName()+":out");
+            }
+            catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+
+        System.out.println("1");
+        thread.start();
+        System.out.println("2");
+        sleep(1500);
+        thread.start();
+        System.out.println("3");
+
+//        CountDownLatch latch = new CountDownLatch(2);
+//        for (int i = 0; i < 2; i++) {
+//            CountDownLatch finalLatch = latch;
+//            new Thread(()->{
+//                try {
+//                    sleep(2000);
+//                    finalLatch.countDown();
+//                }
+//                catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//            }).start();
+//        }
+//        latch.await();
+//        System.out.println("out");
+//        if (2 > 0) {
+//            latch = new CountDownLatch(2);
+//            for (int i = 0; i < 2; i++) {
+//                CountDownLatch finalLatch = latch;
+//                new Thread(()->{
+//                    try {
+//                        sleep(2000);
+//                        finalLatch.countDown();
+//                    }
+//                    catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }).start();
+//            }
+//            latch.await();
+//            System.out.println("out");
+//        }
 
     }
     private static String getLastDay(String dateStr) {
