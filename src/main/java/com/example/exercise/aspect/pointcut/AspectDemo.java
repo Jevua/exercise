@@ -1,5 +1,7 @@
 package com.example.exercise.aspect.pointcut;
 
+import java.util.Map;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
@@ -14,6 +16,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
+import com.example.exercise.annotation.AnnotationDemo;
 import com.example.exercise.aspect.service.AspectService;
 
 @Aspect
@@ -24,10 +27,10 @@ public class AspectDemo {
     //类路径
 //    @Pointcut("execution(* com.example.exercise.aspect.service.AspectService.*(..))")
     //注解
-//    @Pointcut("@annotation(com.example.exercise.annotation.AnnotationDemo)")
+    @Pointcut("@annotation(com.example.exercise.annotation.AnnotationDemo)")
 //    @Pointcut("within(@org.springframework.stereotype.Controller * || @org.springframework.stereotype.Service *) && @annotation(com.example.exercise.annotation.AnnotationDemo)")
 //    @Pointcut("(@within(org.springframework.stereotype.Controller) || @within(org.springframework.stereotype.Service)) && @annotation(com.example.exercise.annotation.AnnotationDemo)")
-    @Pointcut("(@target(org.springframework.stereotype.Controller) || @within(org.springframework.stereotype.Service)) && @annotation(com.example.exercise.annotation.AnnotationDemo)")
+//    @Pointcut("(@target(org.springframework.stereotype.Controller) || @within(org.springframework.stereotype.Service)) && @annotation(com.example.exercise.annotation.AnnotationDemo)")
     private void pointCut(){}
 
     @AfterReturning("pointCut()")
@@ -45,9 +48,14 @@ public class AspectDemo {
         logger.info("throw after");
     }
 
-    @Around("pointCut()")
-    public void around(ProceedingJoinPoint invocation) throws Throwable {
+//    @Around("pointCut()")
+    @Around(value = "@annotation(annotationDemo)", argNames = "invocation,annotationDemo")
+    public void around(ProceedingJoinPoint invocation,AnnotationDemo annotationDemo) throws Throwable {
         logger.info("point around start");
+        logger.info("str:"+annotationDemo.str());
+        Object[] objects = invocation.getArgs();
+        Map map = (Map) objects[0];
+        System.out.println(map.get("key"));
         Object result = invocation.proceed();
         logger.info(result.toString());
         logger.info("point around end");

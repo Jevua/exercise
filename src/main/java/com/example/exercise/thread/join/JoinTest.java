@@ -1,4 +1,4 @@
-package com.example.exercise.ThreadJoin;
+package com.example.exercise.thread.join;
 
 import static java.lang.Thread.sleep;
 

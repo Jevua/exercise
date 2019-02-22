@@ -5,6 +5,10 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import static java.lang.Thread.sleep;
 
+/**
+ * @author jevua
+ * 可重入公平的互斥锁
+ */
 public class ReentrantLockDemo {
 
     public static void main(String[] args) {

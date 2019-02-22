@@ -1,5 +1,8 @@
 package com.example.exercise.aspect.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +20,9 @@ public class AspectController {
             params = {"method=do"}
     )
     public void doAspect() {
-        aspectService.testPointCut();
+        Map map = new HashMap<>();
+        map.put("key", "value");
+        aspectService.testPointCut(map);
     }
 
     @RequestMapping(

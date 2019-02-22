@@ -31,7 +31,7 @@ public class LockConditionDemo {
            lock.lock();
             System.out.println(Thread.currentThread().getName() + "获得锁");
             try {
-                System.out.println("condition wait in and unlock");
+                System.out.println("condition wait in and unlock——condition等待，释放锁");
                 condition.await();
                 System.out.println("condition wait out");
                 sleep(10000);
@@ -46,7 +46,7 @@ public class LockConditionDemo {
             lock.lock();
             System.out.println(Thread.currentThread().getName() + "获得锁");
             condition.signal();
-            System.out.println("condition signal");
+            System.out.println("condition signal——condition重新获得锁");
             lock.unlock();
             System.out.println(Thread.currentThread().getName() + "unlock");
         }).start();
