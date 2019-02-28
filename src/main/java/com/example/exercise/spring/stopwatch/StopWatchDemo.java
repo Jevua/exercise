@@ -9,6 +9,7 @@ public class StopWatchDemo {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         TimeUnit.SECONDS.sleep(3);
+        Thread.sleep(1000);
         stopWatch.stop();
         System.out.println(stopWatch.getTotalTimeMillis());
     }
