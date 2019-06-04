@@ -1,8 +1,5 @@
 package com.example.exercise.spring.annotation;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.annotation.Nonnull;
 
 public class AnnotationDemo {

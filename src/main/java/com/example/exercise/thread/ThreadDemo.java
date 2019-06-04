@@ -2,11 +2,11 @@ package com.example.exercise.thread;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import com.example.exercise.fizzbuzz.FizzBuzzDemo;
+import com.example.exercise.algorithm.fizzbuzz.FizzBuzzDemo;
+
 
 public class ThreadDemo implements Runnable {
 

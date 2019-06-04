@@ -1,4 +1,4 @@
-package com.example.exercise.concurrent.semaphore;
+package com.example.exercise.algorithm.orderedoutput;
 
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;

@@ -1,4 +1,4 @@
-package com.example.exercise.fizzbuzz;
+package com.example.exercise.algorithm.fizzbuzz;
 
 public class FizzBuzzDemo {
 

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XSSConfig>
+	<!-- 是否进行header校验 -->
+	<isCheckHeader>false</isCheckHeader>
+	<!-- 是否进行parameter校验 -->
+	<isCheckParameter>true</isCheckParameter>
+	<!-- 是否记录日志 -->
+	<isLog>true</isLog>
+	<!-- 是否中断请求 -->
+	<isChain>true</isChain>
+	<!-- 是否开启特殊字符替换 -->
+	<replace>false</replace>
+	<!-- 是否开启特殊url校验 -->
+	<isCheckUrl>true</isCheckUrl>
+	<regexList>
+		<!-- 匹配含有字符： alert -->
+		<regex><![CDATA[.*[A|a][L|l][E|e][R|r][T|t]\\s*.*]]></regex>
+		<!-- 匹配含有字符： String.fromCharCode -->
+		<regex><![CDATA[.*[S|s][T|t][R|r][I|i][N|n][G|g]\\.[F|f][R|r][O|o][M|m][C|c][H|h][A|a][R|r][C|c][O|o][D|d][E|e]\\s*.*]]></regex>
+		<!-- 匹配含有字符： window.location = -->
+		<regex><![CDATA[.*[W|w][I|i][N|n][D|d][O|o][W|w]\\.[L|l][O|o][C|c][A|a][T|t][I|i][O|o][N|n]\\s*=.*]]></regex>
+		<!-- 匹配含有字符：location.href = -->
+		<regex><![CDATA[.*[L|l][O|o][C|c][A|a][T|t][I|i][O|o][N|n]\\.[H|h][R|r][E|e][F|f]\\s*=.*]]></regex>
+		<!-- 匹配含有字符：style = x:ex pression  -->
+		<regex><![CDATA[.*[S|s][T|t][Y|y][L|l][E|e]\\s*=.*[X|x]:[E|e][X|x].*[P|p][R|r][E|e][S|s]{1,2}[I|i][O|o][N|n]\\s*.*]]></regex>
+		<!-- 匹配含有字符： unescape -->
+		<regex><![CDATA[.*[U|u][N|n][E|e][S|s][C|c][A|a][P|p][E|e]\\s*.*]]></regex>
+		<!-- 匹配含有字符： execscript -->
+		<regex><![CDATA[.*[E|e][X|x][E|e][C|c][S|s][C|c][R|r][I|i][P|p][T|t]\\s*.*]]></regex>
+		<!-- 匹配含有字符： msgbox -->
+		<regex><![CDATA[.*[M|m][S|s][G|g][B|b][O|o][X|x]\\s*.*]]></regex>
+
+		<!-- 匹配含有字符： confirm -->
+		<!--<regex><![CDATA[.*[C|c][O|o][N|n][F|f][I|i][R|r][M|m]\\s*.*]]></regex>-->
+
+		<!-- 匹配含有字符： prompt-->
+		<regex><![CDATA[.*[P|p][R|r][O|o][M|m][P|p][T|t]\\s*.*]]></regex>
+		<!-- 匹配含有字符： <script>  -->
+		<regex><![CDATA[.*<[S|s][C|c][R|r][I|i][P|p][T|t]>.*]]></regex>
+		<!-- 匹配含有字符： </script> -->
+		<regex><![CDATA[.*</[S|s][C|c][R|r][I|i][P|p][T|t]>.*]]></regex>
+		<!-- 匹配含有字符： 含有回车换行 和 <script> </script> -->
+		<regex><![CDATA[[[.&[^a]]|[|a|\n|\r\n|\r|\u0085|\u2028|\u2029]]*<[S|s][C|c][R|r][I|i][P|p][T|t]>.*</[S|s][C|c][R|r][I|i][P|p][T|t]>[[.&[^a]]|[|a|\n|\r\n|\r|\u0085|\u2028|\u2029]]*]]></regex>
+
+		<!-- 增加105个敏感脚本 -->
+		<regex><![CDATA[.*[F|f][S|s][C|c][O|o][M|m][M|m][A|a][N|n][D|d]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][A|a][B|b][O|o][R|r][T|t]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][A|a][C|c][T|t][I|i][V|v][A|a][T|t][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][A|a][F|f][T|t][E|e][R|r][P|p][R|r][I|i][N|n][T|t]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][A|a][F|f][T|t][E|e][R|r][U|u][P|p][D|d][A|a][T|t][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][B|b][E|e][F|f][O|o][R|r][E|e][A|a][C|c][T|t][I|i][V|v][A|a][T|t][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][B|b][E|e][F|f][O|o][R|r][E|e][C|c][O|o][P|p][Y|y]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][B|b][E|e][F|f][O|o][R|r][E|e][C|c][U|u][T|t]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][B|b][E|e][F|f][O|o][R|r][E|e][D|d][E|e][A|a][C|c][T|t][I|i][V|v][A|a][T|t][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][B|b][E|e][F|f][O|o][R|r][E|e][E|e][D|d][I|i][T|t][F|f][O|o][C|c][U|u][S|s]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][B|b][E|e][F|f][O|o][R|r][E|e][P|p][A|a][S|s][T|t][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][B|b][E|e][F|f][O|o][R|r][E|e][P|p][R|r][I|i][N|n][T|t]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][B|b][E|e][F|f][O|o][R|r][E|e][U|u][N|n][L|l][O|o][A|a][D|d]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][B|b][E|e][F|f][O|o][R|r][E|e][U|u][P|p][D|d][A|a][T|t][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][B|b][E|e][G|g][I|i][N|n]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][B|b][L|l][U|u][R|r]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][B|b][O|o][U|u][N|n][C|c][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][C|c][E|e][L|l][L|l][C|c][H|h][A|a][N|n][G|g][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][C|c][H|h][A|a][N|n][G|g][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][C|c][L|l][I|i][C|c][K|k]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][C|c][O|o][N|n][T|t][E|e][X|x][T|t][M|m][E|e][N|n][U|u]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][C|c][O|o][N|n][T|t][R|r][O|o][L|l][S|s][E|e][L|l][E|e][C|c][T|t]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][C|c][O|o][P|p][Y|y]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][C|c][U|u][T|t]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][D|d][A|a][T|t][A|a][A|a][V|v][A|a][I|i][L|l][A|a][B|b][L|l][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][D|d][A|a][T|t][A|a][S|s][E|e][T|t][C|c][H|h][A|a][N|n][G|g][E|e][D|d]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][D|d][A|a][T|t][A|a][S|s][E|e][T|t][C|c][O|o][M|m][P|p][L|l][E|e][T|t][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][D|d][B|b][L|l][C|c][L|l][I|i][C|c][K|k]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][D|d][E|e][A|a][C|c][T|t][I|i][V|v][A|a][T|t][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][D|d][R|r][A|a][G|g]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][D|d][R|r][A|a][G|g][E|e][N|n][D|d]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][D|d][R|r][A|a][G|g][L|l][E|e][A|a][V|v][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][D|d][R|r][A|a][G|g][E|e][N|n][T|t][E|e][R|r]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][D|d][R|r][A|a][G|g][O|o][V|v][E|e][R|r]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][D|d][R|r][A|a][G|g][D|d][R|r][O|o][P|p]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][D|d][R|r][A|a][G|g][S|s][T|t][A|a][R|r][T|t]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][D|d][R|r][O|o][P|p]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][E|e][N|n][D|d]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][E|e][R|r][R|r][O|o][R|r]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][E|e][R|r][R|r][O|o][R|r][U|u][P|p][D|d][A|a][T|t][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][F|f][I|i][L|l][T|t][E|e][R|r][C|c][H|h][A|a][N|n][G|g][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][F|f][I|i][N|n][I|i][S|s][H|h]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][F|f][O|o][C|c][U|u][S|s]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][F|f][O|o][C|c][U|u][S|s][I|i][N|n]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][F|f][O|o][C|c][U|u][S|s][O|o][U|u][T|t]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][H|h][A|a][S|s][H|h][C|c][H|h][A|a][N|n][G|g][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][H|h][E|e][L|l][P|p]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][I|i][N|n][P|p][U|u][T|t]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][K|k][E|e][Y|y][D|d][O|o][W|w][N|n]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][K|k][E|e][Y|y][P|p][R|r][E|e][S|s][S|s]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][K|k][E|e][Y|y][U|u][P|p]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][L|l][A|a][Y|y][O|o][U|u][T|t][C|c][O|o][M|m][P|p][L|l][E|e][T|t][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][L|l][O|o][A|a][D|d]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][L|l][O|o][S|s][E|e][C|c][A|a][P|p][T|t][U|u][R|r][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][M|m][E|e][D|d][I|i][A|a][C|c][O|o][M|m][P|p][L|l][E|e][T|t][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][M|m][E|e][D|d][I|i][A|a][E|e][R|r][R|r][O|o][R|r]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][M|m][E|e][S|s][S|s][A|a][G|g][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][M|m][O|o][U|u][S|s][E|e][D|d][O|o][W|w][N|n]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][M|m][O|o][U|u][S|s][E|e][E|e][N|n][T|t][E|e][R|r]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][M|m][O|o][U|u][S|s][E|e][L|l][E|e][A|a][V|v][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][M|m][O|o][U|u][S|s][E|e][M|m][O|o][V|v][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][M|m][O|o][U|u][S|s][E|e][O|o][U|u][T|t]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][M|m][O|o][U|u][S|s][E|e][O|o][V|v][E|e][R|r]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][M|m][O|o][U|u][S|s][E|e][U|u][P|p]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][M|m][O|o][U|u][S|s][E|e][W|w][H|h][E|e][E|e][L|l]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][M|m][O|o][V|v][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][M|m][O|o][V|v][E|e][E|e][N|n][D|d]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][M|m][O|o][V|v][E|e][S|s][T|t][A|a][R|r][T|t]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][O|o][F|f][F|f][L|l][I|i][N|n][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][O|o][N|n][L|l][I|i][N|n][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][O|o][U|u][T|t][O|o][F|f][S|s][Y|y][N|n][C|c]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][P|p][A|a][S|s][T|t][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][P|p][A|a][U|u][S|s][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][P|p][O|o][P|p][S|s][T|t][A|a][T|t][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][P|p][R|r][O|o][G|g][R|r][E|e][S|s][S|s]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][P|p][R|r][O|o][P|p][E|e][R|r][T|t][Y|y][C|c][H|h][A|a][N|n][G|g][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][R|r][E|e][A|a][D|d][Y|y][S|s][T|t][A|a][T|t][E|e][C|c][H|h][A|a][N|n][G|g][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][R|r][E|e][D|d][O|o]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][R|r][E|e][P|p][E|e][A|a][T|t]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][R|r][E|e][S|s][E|e][T|t]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][R|r][E|e][S|s][I|i][Z|z][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][R|r][E|e][S|s][I|i][Z|z][E|e][E|e][N|n][D|d]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][R|r][E|e][S|s][I|i][Z|z][E|e][S|s][T|t][A|a][R|r][T|t]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][R|r][E|e][S|s][U|u][M|m][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][R|r][E|e][V|v][E|e][R|r][S|s][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][R|r][O|o][W|w][S|s][E|e][N|n][T|t][E|e][R|r]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][R|r][O|o][W|w][E|e][X|x][I|i][T|t]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][R|r][O|o][W|w][D|d][E|e][L|l][E|e][T|t][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][R|r][O|o][W|w][I|i][N|n][S|s][E|e][R|r][T|t][E|e][D|d]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][S|s][C|c][R|r][O|o][L|l][L|l]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][S|s][E|e][E|e][K|k]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][S|s][E|e][L|l][E|e][C|c][T|t]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][S|s][E|e][L|l][E|e][C|c][T|t][I|i][O|o][N|n][C|c][H|h][A|a][N|n][G|g][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][S|s][E|e][L|l][E|e][C|c][T|t][S|s][T|t][A|a][R|r][T|t]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][S|s][T|t][A|a][R|r][T|t]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][S|s][T|t][O|o][P|p]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][S|s][T|t][O|o][R|r][A|a][G|g][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][S|s][Y|y][N|n][C|c][R|r][E|e][S|s][T|t][O|o][R|r][E|e][D|d]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][S|s][U|u][B|b][M|m][I|i][T|t]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][T|t][I|i][M|m][E|e][E|e][R|r][R|r][O|o][R|r]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][T|t][R|r][A|a][C|c][K|k][C|c][H|h][A|a][N|n][G|g][E|e]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][U|u][N|n][D|d][O|o]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][U|u][N|n][L|l][O|o][A|a][D|d]\\s*.*]]></regex>
+		<regex><![CDATA[.*[O|o][N|n][U|u][R|r][L|l][F|f][L|l][I|i][P|p]\\s*.*]]></regex>
+		<regex><![CDATA[.*[S|s][E|e][E|e][K|k][S|s][E|e][G|g][M|m][E|e][N|n][T|t][T|t][I|i][M|m][E|e]\\s*.*]]></regex>
+
+		<!--屏蔽<>"'-->
+		<!--<regex><![CDATA[.*>.*]]></regex>-->
+		<!--<regex><![CDATA[.*<.*]]></regex>-->
+		<!--<regex><![CDATA[.*'.*]]></regex>-->
+
+	</regexList>
+</XSSConfig>
